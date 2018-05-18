@@ -79,9 +79,12 @@ class UnloadCopyTool:
 
         destination = ResourceFactory.get_target_resource_from_config_helper(self.config_helper, self.region)
 
-        if global_config_values['tableName']:
-            source = TableResource(source.get_cluster(), source.get_schema(), global_config_values['tableName'])
-            destination = TableResource(destination.get_cluster(), destination.get_schema(), global_config_values['tableName'])
+        print source
+        print destination
+
+        # if global_config_values['tableName']:
+        #     source = TableResource(source.get_cluster(), source.get_schema(), global_config_values['tableName'])
+        #     destination = TableResource(destination.get_cluster(), destination.get_schema(), global_config_values['tableName'])
 
         self.task_manager = TaskManager()
         self.barrier_after_all_cluster_pre_tests = NoOperationTask()

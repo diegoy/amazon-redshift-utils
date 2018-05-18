@@ -266,7 +266,7 @@ class SchemaResource(DBResource, ChildObject):
 
 class TableResource(SchemaResource):
     unload_table_stmt = """unload ('SELECT {columns} FROM {schema_name}.{table_name}')
-                     to '{dataStagingPath}.' credentials 
+                     to '{dataStagingPath}.' credentials
                      '{s3_access_credentials};master_symmetric_key={master_symmetric_key}'
                      manifest
                      encrypted
@@ -274,9 +274,9 @@ class TableResource(SchemaResource):
                      delimiter '^' addquotes escape allowoverwrite"""
 
     copy_table_stmt = """copy {schema_name}.{table_name} {columns}
-                   from '{dataStagingPath}.manifest' credentials 
+                   from '{dataStagingPath}.manifest' credentials
                    '{s3_access_credentials};master_symmetric_key={master_symmetric_key}'
-                   manifest 
+                   manifest
                    encrypted
                    gzip
                    delimiter '^' removequotes escape compupdate off"""

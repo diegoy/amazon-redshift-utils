@@ -18,11 +18,12 @@ class S3Helper:
         if s3_url.startswith("s3://"):
             # download the configuration from s3
             (config_bucket_name, config_key) = S3Helper.tokenize_s3_path(s3_url)
-
+            print config_bucket_name
+            print config_key
             response = self.s3_client.get_object(Bucket=config_bucket_name,
                                                  Key=config_key)  # Throws NoSuchKey exception if no config
             config_contents = response['Body'].read(1024 * 1024).decode('utf-8')  # Read maximum 1MB
-
+            print config_contents
             config = json.loads(config_contents)
         else:
             with open(s3_url) as f:
